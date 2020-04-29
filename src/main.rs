@@ -58,6 +58,9 @@ fn main() {
     let arguments: Vec<String> = env::args().collect();
     let mut todo_list = TodoList::new();
 
+    todo_list.add_to_list("Say hi to Henry".to_string());
+    todo_list.add_to_list("Do something with Rust".to_string());
+
     let command = match arguments[1].as_str() {
         "get" => Command::Get,
         "add" => Command::Add(arguments[2].clone()),
