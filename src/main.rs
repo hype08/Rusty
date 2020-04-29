@@ -35,14 +35,28 @@ impl TodoList {
     }
 }
 
+enum Command {
+    Get,
+    Add(String),
+}
+
 fn main() {
     let args: Vec<String> = env::args().collect();
-    let command = args[1].clone();
     let mut todo_list = TodoList::new();
+
+    let command = match args[1].as_str() {
+        "get" => Command::Get,
+        "add" => Command::Add(args[2].clone()),
+        _ => panic!("command required."),
+    };
 
     todo_list.add_to_list("Say hi".to_string());
 
-    if command == "get" {
-        todo_list.print();
+    match command {
+        Command::Get => todo_list.print(),
+        Command::Add(task) => {
+            todo_list.add_to_list(task);
+            todo_list.print();
+        }
     }
 }
