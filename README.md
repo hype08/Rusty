@@ -12,7 +12,10 @@ git clone https://github.com/hype08/rust-cli.git
 ## Usage
 
 ```rust
-
+cargo run get // get your to-do list.
+cargo run add "new task" // add a task to the list.
+cargo run done `index` // mark task index as done.
+cargo run remove `index` // remove task index.
 ```
 
 ## Contributing
